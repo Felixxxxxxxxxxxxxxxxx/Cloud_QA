@@ -7,19 +7,19 @@ import datetime,time
 
 class wx_push(object):
 
-    CID = "wwf374186257aa440e"
-    AID = "1000003"
-    SECRET = "-We5QhnTDMRvPfM0oJKqIfqZQL0lpOalhAKIwv5hAT8"
-    sendkey="061218Cancer*"
+    CID = your_cid
+    AID = your_aid
+    SECRET = your_secret
+    sendkey= your_sendkey
 
     def push_decision(via):
 
         if via=='rwth':
-            wx_push.AID = "1000003"
-            wx_push.SECRET = "-We5QhnTDMRvPfM0oJKqIfqZQL0lpOalhAKIwv5hAT8"
+            wx_push.AID = your_aid
+            wx_push.SECRET = your_secret
         if via=='important':
-            wx_push.AID = "1000002"
-            wx_push.SECRET = "2VxW1rBLLFYo31IExa1AGT0sS7H6WUGdKeViJ09-XLs"
+            wx_push.AID = your_aid
+            wx_push.SECRET = your_secret
 
 
 
@@ -110,6 +110,7 @@ def Push(text,via='rwth'):
 
 hour = 30
 while True:    
+    # send Q&A a day
     now_time = datetime.datetime.now()
     if now_time.hour != hour & now_time.hour > 10:
         QA = Database.pick_random_value(table_name="Question")
