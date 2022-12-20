@@ -5,25 +5,25 @@ import datetime
 
 class Database(object):
 
-    dbhost='8.218.127.197'
-    dbuser='root'
-    dbpassword='061218cancer'
+    dbhost=your_server_ip
+    dbuser=your_database_uname
+    dbpassword=your_database_passwd
 
 
-    def create_time():                                          #这个函数用来生成根据日期的表单名字
+    def create_time():                                          
 
-        #根据日期生成表单名字
+        # generate date
         now_time = datetime.datetime.now()
         date="{2}_{1}_{0}".format(now_time.day,now_time.month,now_time.year)
         return date
 
 
-    def create_table(table_name,db_name='cancer'):                                                   #这个函数用来根据命名建立表单
-
+    def create_table(table_name,db_name='cancer'):                                                   
+        # create table
         db = pymysql.connect(host=Database.dbhost,
                             user=Database.dbuser,
                             password=Database.dbpassword,
-                            database=db_name)     # 打开数据库连接
+                            database=db_name)     
         cursor = db.cursor()
 
         if table_name == 'Question' :
@@ -55,7 +55,6 @@ class Database(object):
     
 
     def insert_value(table_name,db_name='cancer',a='',b='',c=''):
-        # 打开数据库连接
         db = pymysql.connect(host=Database.dbhost,
                             user=Database.dbuser,
                             password=Database.dbpassword,
@@ -70,7 +69,6 @@ class Database(object):
 
         if table_name == "Question":
 
-            #插入表单
             sql =  'INSERT INTO {}(\
                     Question,\
                     Answer,\
